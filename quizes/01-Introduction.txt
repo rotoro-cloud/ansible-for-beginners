@@ -1,0 +1,64 @@
+Q:
+На каком языке написан Ansible?
+
+A:
+Python
+-----
+
+Q:
+К какому классу инструментов относится Ansible?
+
+A:
+Configuration Management Tool
+-----
+
+Q:
+Что из этого может Ansible
+
+A:
+Управление контейнеров
+Управление инфраструктурой
+Управление приложениями
+Управление облаком
+Управление SD-сетями
+-----
+
+Q:
+Какая компания создала Ansible
+
+A:
+Red Hat Inc
+-----
+
+Q:
+В чем приемущество идемпотентности?
+
+A:
+Безопасно применять Ansible-скрипты несколько раз на сервер.
+
+-----
+
+Q:
+Что из этого строки в YAML? 
+
+A:
+"This is a string"
+This is also a string
+00 - string too
+I am: a string      - NOT A STRING!
+-----
+
+Q:
+Комментарии в YAML?
+
+A:
+#This is a comment
+-----
+
+Q:
+Логические в YAML?
+
+A:
+true, True, TRUE, yes, Yes, YES, on, On, ON, y, Y
+false, False, FALSE, no, No, NO, off, Off, OFF, n, N
+-----
