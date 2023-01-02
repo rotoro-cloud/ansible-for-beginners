@@ -2,9 +2,12 @@ Q:
 Какая команда запускает playbooks? 
 
 A:
-ansible-playbook 
+ansible-playbook
+----- 
 play
+-----
 run
+-----
 do
 
 Q:
