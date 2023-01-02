@@ -10,8 +10,11 @@ Q:
 
 A:
 localhost
+-----
 192.168.0.1
+-----
 ansiblehost
+-----
 defaulthost
 
 Q:
@@ -85,4 +88,3 @@ ansible_host=93.93.136.21 ansible_connection=winrm ansible_user=admin ansible_ss
 ansible_host=93.93.136.21 ansible_connection=docker ansible_user_login=root ansible_password=admin
 -----
 ansible_host=93.93.136.21 ansible_connection=ssh user=root password=admin
-
