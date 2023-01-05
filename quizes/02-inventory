@@ -11,6 +11,11 @@ Q:
 A:
 localhost
 -----
+192.168.0.1
+-----
+ansiblehost
+-----
+defaulthost
 
 Q:
 В чем разница между подключением к locahost и любой другой машине?
@@ -51,3 +56,35 @@ A:
 lb
 web
 -----
+
+Q:
+Есть несколько серверов с доменными именами `server1.domain.com`, `server2.domain.com`, `server3.domain.com`, `server4.domain.com`. В inventory файле нужно сделать алиасы для этих серверов, потому что доменные имена сложно запомнить. Какой вариант ответа правильно задаст алиасы для этих серверов?
+
+A:
+app ansible_host=server1.domain.com
+db ansible_host=server2.domain.com
+web ansible_host=server3.domain.com
+mail ansible_host=server4.domain.com
+-----
+alias "app" ansible_host=server1.domain.com
+alias "db" ansible_host=server2.domain.com
+alias "web" ansible_host=server3.domain.com
+alias "mail" ansible_host=server4.domain.com
+-----
+server1.domain.com=app
+server2.domain.com=db
+server3.domain.com=web
+server4.domain.com=mail
+-----
+
+Q:
+Есть сервер `93.93.136.21` на Linux. Как правильно надо заполнить inventory файл, чтобы ansible смог подключиться к этому серверу по SSH, используя логин `root` и пароль `admin`?
+
+A:
+ansible_host=93.93.136.21 ansible_connection=ssh ansible_user=root ansible_ssh_pass=admin
+-----
+ansible_host=93.93.136.21 ansible_connection=winrm ansible_user=admin ansible_ssh_pass=root
+-----
+ansible_host=93.93.136.21 ansible_connection=docker ansible_user_login=root ansible_password=admin
+-----
+ansible_host=93.93.136.21 ansible_connection=ssh user=root password=admin
