@@ -1,0 +1,71 @@
+Q:
+Есть ли у ansible понятие импорта или вставки других playbooks?
+
+A:
+Да. Используется include и import_* для включения tasks и plays.
+
+-----
+
+Q:
+Что верно про ansible-galaxy? 
+
+A:
++ Инструмент командной строки, который используется для поиска и загрузки ролей, опубликованных сообществом.
+
++ Можно использовать для создания скелета для создания роли.
+
+- Дает доступ к коллекциям Ansible Automation Hub
+
+- Работает по платной подписке
+
+
+Q:
+Какой командой можно создать новый шаблон роли? 
+
+A:
+ansible-galaxy init --init-path test/roles web
+-----
+
+Q:
+Что такое Ansible Galaxy? 
+
+A:
+Репозиторий с открытым исходным кодом сообщества ansible, предоставляющий роли ansible.
+-----
+
+Q:
+Установи ntp роль geerlingguy из Ansible Galaxy
+
+A:
+ansible-galaxy install -p ./roles geerlingguy.ntp
+-----
+
+Q:
+Как получить список установленных ролей для playbook с ansible-galaxy
+
+A:
+ansible-galaxy list -p ./roles
+-----
+
+Q:
+Удалить роль с ansible-galaxy 
+
+A:
+ansible-galaxy remove geerlingguy.ntp -p ./roles/
+-----
+
+Q:
+Зачем нужен include 
+
+A:
+Позволяет включать tasks или playbooks. Часто используется в ролях.
+-----
+
+Q:
+Какие инструменты пришли на смену устаревшему include
+
+A:
++ include_tasks
++ import_tasks
++ import_playbook
+-----
