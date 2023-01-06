@@ -1,0 +1,159 @@
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+https://docs.ansible.com/ansible/2.9/plugins/lookup.html
+
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html
+
+
+***
+
+Q:
+Что такое lookups? 
+
+A:
+Механизм Ansible для чтения данных конфигурации из различных источников, чтобы эти данные можно было использовать в playbooks или templates.
+-----
+
+Q:
+Что из этого lookups?
+
+A:
+file
+pipe
+env
+
++ all of this
+-----
+
+Q:
+Выбери команду для получения SSH-ключа из /home/max/.ssh/id_rsa.pub
+
+A:
++ debug: msg={{ lookup('file','/home/max/.ssh/id_rsa.pub') }}
+
+- debug: msg="{{lookup('pipe', 'git rev-parse HEAD') }}"
+
+- debug: msg="{{lookup('env', 'SHELL') }}"
+-----
+
+
+Q:
+Какие из этих директив являются циклами в Ansible?
+
+A:
+- with_items
+- with_list
+- with_dict
+- loop
+
++ all of this
+-----
+
+Q:
+Что из этих директив являются эквивалентами? 
+
+A:
+- with_items && loop
++ with_list && loop
+- with_items && until
+- loop && until
+-----
+
+Q:
+Мы проходим по dictionary
+
+- name: iterate over dict
+  debug: msg="{{ item.key}}={{ item.value }}"
+  with_dict: "{{ ansible_eth0.ip4 }}"
+  
+Как это реализовать с помощью loop:
+- name: loop over dict
+  debug: msg="{{ item.0}}={{ item.1 }}"
+  loop: ?????
+  
+(обрати внимание, что msg отличается от данного в примере)
+
+A:
+- "{{ ansible_eth0.ip4|dict2items }}"
+- "{{ ansible_eth0.ip4 }}"
++ "{{ ansible_eth0.ip4|dictsort }}"
+- "{{ ansible_eth0.ip4|flatten }}"
+
+-----
+
+Q:
+Какова связь между lookups и with_*?
+
+A:
+With-loops это lookup-плагины, возвращающие массив.
+-----
+
+
+
+Q:
+Что нужно использовать, чтобы ? 
+
+A:
+
+- name: reboot only debian OS
+  command: /sbin/shutdown -r now
+  when: ansible_facts['os_family'] == "Debian"
+-----
+
+
+Q:
+Когда выполнинится модуль shell? 
+
+tasks:
+    - name: Conditional test
+      vars:
+       fir: true
+       sec: "yes"
+      shell: echo "Ok 1st '{{ fir }}', 2nd '{{ sec }}'!"
+      when: fir and sec | bool
+
+A:
+
+- Если fir и sec определены
+- Если fir или sec неопределена
+- Если fir и sec имеют одинаково значение
++ Если fir и sec истинны
+
+-----
+
+Q:
+Что выведет такой playbook? 
+
+tasks:
+  - name: Conditional list test
+    vars:
+      lst:  [ 0, 2, 4, 6, 8, 10 ]
+    shell: echo "{{ item }}"
+    loop: "{{ lst }}"
+    when: item > 5
+
+A:
+
+skipping: [localhost] => (item=0) 
+skipping: [localhost] => (item=2) 
+skipping: [localhost] => (item=4) 
+changed: [localhost] => (item=6)
+changed: [localhost] => (item=8)
+changed: [localhost] => (item=10)
+
+^CORRECT
+
+----
+changed: [localhost] => (item=0) 
+changed: [localhost] => (item=2) 
+changed: [localhost] => (item=4) 
+changed: [localhost] => (item=6)
+changed: [localhost] => (item=8)
+changed: [localhost] => (item=10)
+----
+changed: [localhost] => (item=0) 
+changed: [localhost] => (item=2) 
+changed: [localhost] => (item=4) 
+skipping: [localhost] => (item=6)
+skipping: [localhost] => (item=8)
+skipping: [localhost] => (item=10)
+-----
