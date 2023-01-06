@@ -1,0 +1,107 @@
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html
+
+Q:
+Как определить переменные в playbook? 
+
+A:
+- hosts: all
+  vars:
+    key_file: /usr/local/nginx.key
+    server_name: localhost
+-----
+
+Q:
+Как определить переменные в playbook используя файл? 
+
+A:
+- hosts: all
+  vars_files:
+  - nginx.yml
+-----
+
+Q:
+Как вывести содержимое переменной? 
+
+A:
+- debug: var=variable name
+-----
+
+Q:
+Как сохранить результат команды в переменную?
+
+A:
+- name: capture current user into a varianle
+  command: whoami
+  register: login
+-----
+
+Q:
+Как запретить ansible останавливать выполнение task после обнаружения ошибки?
+
+A:
+Установить флаг ignore_errors: True для task.
+-----
+
+Q:
+Если переменная "user" содержит dictionary, как можно получить ключ password этого словаря?
+
+A:
+- {{ user.password }}
+- {{ user['password'] }}
+
++ All of this
+-----
+
+Q:
+В каком случае можно использовать {{ user['name'] }}, но нельзя  {{ user.name }}?
+
+A:
+Если ключ в dictionary содержит пробел. Например {{ user['user name'] }}
+-----
+
+Q:
+Как убидится, что firewalld остановлен?
+
+A:
+
++ service name=firewalld state=stopped
+- command: sudo systemctl stop firewalld
+- yum: name=firewalld state=stopped
+-----
+
+
+Q:
+Какой модуль использовать для установки ntpd в CentOS 
+
+A:
++ yum: name=ntp state=present
+-----
+
+Q:
+Какой модуль использовать для установки ntpd в Debian 
+
+A:
++ apt: name=ntp state=present
+-----
+
+Q:
+Какой модуль использовать для установки ntpd и в Debian, и в CentOS
+
+A:
++ package: name=ntp state=present
+-----
+
+Q:
+Как запустить службу ntpd
+
+A:
+- service: name=ntpd state=started enabled=yes
+-----
+
+Q:
+В чем приемущество идемпотентности?
+
+A:
+Безопасно применять Ansible-скрипты несколько раз на сервер.
+
+-----
