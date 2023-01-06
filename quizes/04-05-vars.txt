@@ -60,42 +60,42 @@ A:
 -----
 
 Q:
-Как убидится, что firewalld остановлен?
+Как убедится, что firewalld остановлен?
 
 A:
 
-+ service name=firewalld state=stopped
++ service: name=firewalld state=stopped
 - command: sudo systemctl stop firewalld
 - yum: name=firewalld state=stopped
 -----
 
 
 Q:
-Какой модуль использовать для установки ntpd в CentOS 
+Какой модуль использовать для установки nginx в CentOS 
 
 A:
-+ yum: name=ntp state=present
++ yum: name=nginx state=present
 -----
 
 Q:
-Какой модуль использовать для установки ntpd в Debian 
+Какой модуль использовать для установки nginx в Debian 
 
 A:
-+ apt: name=ntp state=present
++ apt: name=nginx state=present
 -----
 
 Q:
-Какой модуль использовать для установки ntpd и в Debian, и в CentOS
+Какой модуль использовать для установки nginx и в Debian, и в CentOS
 
 A:
-+ package: name=ntp state=present
++ package: name=nginx state=present
 -----
 
 Q:
-Как запустить службу ntpd
+Как запустить службу nginx
 
 A:
-- service: name=ntpd state=started enabled=yes
+- service: name=nginx state=started enabled=yes
 -----
 
 Q:
