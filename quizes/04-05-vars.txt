@@ -11,7 +11,7 @@ A:
 -----
 
 Q:
-Как определить переменные в playbook используя файл? 
+Как определить переменные в playbook, используя файл? 
 
 A:
 - hosts: all
@@ -71,28 +71,28 @@ A:
 
 
 Q:
-Какой модуль использовать для установки nginx в CentOS 
+Какой модуль использовать для установки nginx в CentOS?
 
 A:
 + yum: name=nginx state=present
 -----
 
 Q:
-Какой модуль использовать для установки nginx в Debian 
+Какой модуль использовать для установки nginx в Debian? 
 
 A:
 + apt: name=nginx state=present
 -----
 
 Q:
-Какой модуль использовать для установки nginx и в Debian, и в CentOS
+Какой модуль использовать для установки nginx и в Debian, и в CentOS?
 
 A:
 + package: name=nginx state=present
 -----
 
 Q:
-Как запустить службу nginx
+Как запустить службу nginx?
 
 A:
 - service: name=nginx state=started enabled=yes
