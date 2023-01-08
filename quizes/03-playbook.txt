@@ -72,3 +72,36 @@ Play связывает неупорядоченный dictionary of hosts с у
 Каждый task ассоциирован с ровно одним module
 
 -----
+Q:
+На каком языке разметки написан по умолчанию Ansible playbook?
+
+A:
+- JSON 
+- XML
++ YAML 
+- HTML
+
+-----
+
+Q:
+Какая команда запускает запустит плейбук install.yml ?
+
+A:
+- ansible install.yml
+
+- ansible --playbook install.yml
+
++ ansible-playbook install.yml
+
+- ansible -p install.yml
+
+-----
+
+Q:
+Каким аргументом можно указать переменную в Ansible playbook?
+
+A:
++ -e
+- -c
+- -v
+- -a
