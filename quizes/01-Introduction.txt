@@ -3,7 +3,9 @@ Q:
 
 A:
 Python
------
+GO
+C++
+JavaScript
 
 Q:
 К какому классу инструментов относится Ansible?
@@ -13,10 +15,10 @@ Configuration Management Tool
 -----
 
 Q:
-Что из этого может Ansible
+Что из этого может делать Ansible?
 
 A:
-Управление контейнеров
+Управление контейнерами
 Управление инфраструктурой
 Управление приложениями
 Управление облаком
@@ -24,11 +26,31 @@ A:
 -----
 
 Q:
-Какая компания создала Ansible
+Какая компания создала Ansible?
 
 A:
 Red Hat Inc
------
+Google
+Yandex
+Yahoo
+
+Q:
+Какой командой установить Ansible на CentOS?
+
+A:
+sudo yum install ansible
+ansible run install
+sudo apt install ansible
+sudo add ansible
+
+Q:
+Зачем нужен YAML в Ansible?
+
+A:
+Для представления файлов управления конфигурациями
+В Ansible не используется YAML
+Это библиотека, которая необходима для работы Ansible
+Это демон, который работает в фоновом режиме 
 
 Q:
 Что из этого строки в YAML? 
@@ -41,14 +63,16 @@ I am: a string      - NOT A STRING!
 -----
 
 Q:
-Комментарии в YAML?
+Как обозначаются комментарии в YAML?
 
 A:
 #This is a comment
------
+-This is a comment
+!This is a comment
+/This is a comment
 
 Q:
-Логические в YAML?
+Какие логические типы есть в YAML?
 
 A:
 true, True, TRUE, yes, Yes, YES, on, On, ON, y, Y

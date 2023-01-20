@@ -12,7 +12,7 @@ Q:
 A:
 + Инструмент командной строки, который используется для поиска и загрузки ролей, опубликованных сообществом.
 
-+ Можно использовать для создания скелета для создания роли.
++ Можно использовать для создания скелета роли.
 
 - Дает доступ к коллекциям Ansible Automation Hub
 
@@ -41,28 +41,28 @@ ansible-galaxy install -p ./roles geerlingguy.ntp
 -----
 
 Q:
-Как получить список установленных ролей для playbook с ansible-galaxy
+Как получить список установленных ролей для playbook с ansible-galaxy?
 
 A:
 ansible-galaxy list -p ./roles
 -----
 
 Q:
-Удалить роль с ansible-galaxy 
+Как удалить роль с ansible-galaxy?
 
 A:
 ansible-galaxy remove geerlingguy.ntp -p ./roles/
 -----
 
 Q:
-Зачем нужен include 
+Зачем нужен include?
 
 A:
 Позволяет включать tasks или playbooks. Часто используется в ролях.
 -----
 
 Q:
-Какие инструменты пришли на смену устаревшему include
+Какие инструменты пришли на смену устаревшему include?
 
 A:
 + include_tasks
