@@ -3,11 +3,13 @@ Q:
 
 A:
 Да. Используется include и import_* для включения tasks и plays.
-
+Нет. Невозможно импортировать или вставлять другие playbooks.
+Да. Используется install для включения tasks и plays.
+Да. Используется insert для включения tasks и plays.
 -----
 
 Q:
-Что верно про ansible-galaxy? 
+Какое утверждение корректно про ansible-galaxy? 
 
 A:
 + Инструмент командной строки, который используется для поиска и загрузки ролей, опубликованных сообществом.
@@ -24,13 +26,19 @@ Q:
 
 A:
 ansible-galaxy init --init-path test/roles web
+ansible-create role test/roles web
+ansible-galaxy install role test/roles web
+ansible init role test/roles web
 -----
 
 Q:
 Что такое Ansible Galaxy? 
 
 A:
-Репозиторий с открытым исходным кодом сообщества ansible, предоставляющий роли ansible.
++ Репозиторий с открытым исходным кодом сообщества ansible, предоставляющий роли ansible.
++ Инструмент командной строки, позволяющий управлять ролями.
+- Сервис, работающий в фоновом режиме.
+- Инструмент, позволяющий удаленно настраивать хосты.
 -----
 
 Q:
@@ -38,6 +46,9 @@ Q:
 
 A:
 ansible-galaxy install -p ./roles geerlingguy.ntp
+ansible-galaxy add -p ./roles geerlingguy.ntp
+ansible galaxy install ./roles geerlingguy.ntp
+ansible galaxy install -p ./roles geerlingguy.ntp
 -----
 
 Q:
@@ -45,6 +56,9 @@ Q:
 
 A:
 ansible-galaxy list -p ./roles
+ansible-galaxy print -p ./roles
+ansible galaxy print roles list
+ansible galaxy show roles
 -----
 
 Q:
@@ -52,6 +66,9 @@ Q:
 
 A:
 ansible-galaxy remove geerlingguy.ntp -p ./roles/
+ansible-galaxe delete geerlingguy.ntp -p ./roles/
+ansible galaxy remove geerlingguy.ntp -p ./roles/
+ansible galaxy clear geerlingguy.ntp -p ./roles/
 -----
 
 Q:
