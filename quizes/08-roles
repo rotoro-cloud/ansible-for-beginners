@@ -2,10 +2,10 @@ Q:
 Есть ли у ansible понятие импорта или вставки других playbooks?
 
 A:
-Да. Используется include и import_* для включения tasks и plays.
-Нет. Невозможно импортировать или вставлять другие playbooks.
-Да. Используется install для включения tasks и plays.
-Да. Используется insert для включения tasks и plays.
++ Да. Используется include и import_* для включения tasks и plays.
+- Нет. Невозможно импортировать или вставлять другие playbooks.
+- Да. Используется install для включения tasks и plays.
+- Да. Используется insert для включения tasks и plays.
 -----
 
 Q:
@@ -19,16 +19,16 @@ A:
 - Дает доступ к коллекциям Ansible Automation Hub
 
 - Работает по платной подписке
-
+-----
 
 Q:
-Какой командой можно создать новый шаблон роли? 
+Какой командой можно создать новый шаблон роли с именем "web" в папке "test/roles"? 
 
 A:
-ansible-galaxy init --init-path test/roles web
-ansible-create role test/roles web
-ansible-galaxy install role test/roles web
-ansible init role test/roles web
++ ansible-galaxy init --init-path test/roles web
+- ansible-create role test/roles web
+- ansible-galaxy install role test/roles web
+- ansible init role test/roles web
 -----
 
 Q:
@@ -42,40 +42,43 @@ A:
 -----
 
 Q:
-Установи ntp роль geerlingguy из Ansible Galaxy
+Установи ntp роль geerlingguy из Ansible Galaxy в папку ./roles.
 
 A:
-ansible-galaxy install -p ./roles geerlingguy.ntp
-ansible-galaxy add -p ./roles geerlingguy.ntp
-ansible galaxy install ./roles geerlingguy.ntp
-ansible galaxy install -p ./roles geerlingguy.ntp
++ ansible-galaxy install -p ./roles geerlingguy.ntp
+- ansible-galaxy add -p ./roles geerlingguy.ntp
+- ansible galaxy install ./roles geerlingguy.ntp
+- ansible galaxy install -p ./roles geerlingguy.ntp
 -----
 
 Q:
 Как получить список установленных ролей для playbook с ansible-galaxy?
 
 A:
-ansible-galaxy list -p ./roles
-ansible-galaxy print -p ./roles
-ansible galaxy print roles list
-ansible galaxy show roles
++ ansible-galaxy list -p ./roles
+- ansible-galaxy print -p ./roles
+- ansible galaxy print roles list
+- ansible galaxy show roles
 -----
 
 Q:
 Как удалить роль с ansible-galaxy?
 
 A:
-ansible-galaxy remove geerlingguy.ntp -p ./roles/
-ansible-galaxe delete geerlingguy.ntp -p ./roles/
-ansible galaxy remove geerlingguy.ntp -p ./roles/
-ansible galaxy clear geerlingguy.ntp -p ./roles/
++ ansible-galaxy remove geerlingguy.ntp -p ./roles/
+- ansible-galaxe delete geerlingguy.ntp -p ./roles/
+- ansible galaxy remove geerlingguy.ntp -p ./roles/
+- ansible galaxy clear geerlingguy.ntp -p ./roles/
 -----
 
 Q:
 Зачем нужен include?
 
 A:
-Позволяет включать tasks или playbooks. Часто используется в ролях.
++ Позволяет включать tasks или playbooks. Часто используется в ролях.
+- В Ansible нет понятия include.
+- Позволяет устанавливать роли.
+- Позволяет импортировать настройки роли в playbooks.
 -----
 
 Q:
@@ -85,4 +88,44 @@ A:
 + include_tasks
 + import_tasks
 + import_playbook
+-----
+
+Q:
+В каком каталоге размещаются переменные, которые могут быть переопределены на уровне playbooks?
+
+A:
++ defaults
+- handlers
+- vars
+- tasks
+-----
+
+Q:
+В каком каталоге размещаются все tasks?
+
+A:
+- tasks
+- defaults
+- handlers
+- vars
+-----
+
+Q:
+В каком каталоге размещаются обработчики событий?
+
+A:
++ handlers
+- defaults
+- tests
+- tasks
+-----
+
+Q:
+В каком каталоге размещаются шаблоны, используемые в playbooks?
+
+A:
++ templates
+- tasks
+- vars
+- handlers
 -----
