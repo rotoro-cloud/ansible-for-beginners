@@ -20,7 +20,11 @@ Q:
 В чем разница между подключением к locahost и любой другой машине?
 
 A:
-Ansible использует SSH для других хостов. Для locahost он использует локальное соединение.
+Для locahost Ansible использует локальное соединение. +
+Ansible использует SSH для других хостов. +
+Ansible использует HTTPS для всех хостов
+Все неверно
+
 -----
 
 Q:
@@ -39,13 +43,40 @@ A:
 xml
 json
 
-Q:
+-----
+
 Определи группу `web` с хостами `spb.rotoro.cloud` и `ekb.rotoro.cloud`
 
+A + C
+
 A:
+
 [web]
 spb.rotoro.cloud
 ekb.rotoro.cloud
+
+B:
+
+[web]
+spb.rotoro.cloud
+
+[web]
+ekb.rotoro.cloud
+
+C:
+
+all:
+  children:
+    web:
+      hosts:
+        spb.rotoro.cloud:
+        ekb.rotoro.cloud:
+D:
+
+web:
+  spb.rotoro.cloud:
+  ekb.rotoro.cloud:
+  
 -----
 
 Q:
