@@ -23,6 +23,8 @@ A:
 Управление приложениями
 Управление облаком
 Управление SD-сетями
+Управление физической безопасностью -
+Управление физическими сетями -
 -----
 
 Q:
@@ -41,7 +43,7 @@ A:
 sudo yum install ansible
 ansible run install
 sudo apt install ansible
-sudo add ansible
+python add ansible
 
 Q:
 Зачем нужен YAML в Ansible?
@@ -53,11 +55,11 @@ A:
 Это демон, который работает в фоновом режиме 
 
 Q:
-Что из этого строки в YAML? 
+Что из этого с точки зрения YAML не является строками? 
 
 A:
-"This is a string"
-This is also a string
+"That is exactly a string"
+Maybe it is a string
 00 - string too
 I am: a string      - NOT A STRING!
 -----
@@ -71,6 +73,8 @@ A:
 !This is a comment
 /This is a comment
 
+
+// Этот вопрос я не вносил на Степик, т.к. не понимаю, как лучше его сформулировать
 Q:
 Какие логические типы есть в YAML?
 
