@@ -4,26 +4,80 @@ Q:
 Как определить переменные в playbook? 
 
 A:
+
 - hosts: all
-  vars:
-    key_file: /usr/local/nginx.key
-    server_name: localhost
+
+- vars:
+    -  key_file: /usr/local/nginx.key
+    -  server_name: localhost
+
+B:
+
+- hosts: all
+  key_file: /usr/local/nginx.key
+  server_name: localhost
+
+C: +
+
+- hosts: all
+  vars:
+    key_file: /usr/local/nginx.key
+    server_name: localhost
+
+D:
+
+- hosts: all
+  vars:
+    key_file:
+      value: /usr/local/nginx.key
+      type: string
+    server_name:
+      value: localhost
+      type: string
 -----
 
 Q:
 Как определить переменные в playbook, используя файл? 
 
-A:
+A: +
 - hosts: all
   vars_files:
   - nginx.yml
+  
+B:
+
+- hosts: all
+- vars_files:
+  - nginx.yml
+
+C:
+
+- hosts: all
+  var_file: nginx.yml
+
+D:
+
+- hosts: all
+- vars:
+  - file: nginx.yml  
+  
+  
 -----
 
 Q:
 Как вывести содержимое переменной? 
 
 A:
-- debug: var=variable name
+  - name: dbug1
+    debug: msg=key_file
+
+  - name: dbug2
+    debug: msg="{{ key_file }}"
+
+  - name: dbug3
+    debug: var=key_file
+    
+    
 -----
 
 Q:
@@ -39,7 +93,10 @@ Q:
 Как запретить ansible останавливать выполнение task после обнаружения ошибки?
 
 A:
-Установить флаг ignore_errors: True для task.
+Установить флаг ignore_errors: True для task. +
+Установить флаг no_errors: True для task.
+Установить значение debug_level: pass для task.
+Установить флаг ignore_all: No для task.
 -----
 
 Q:
@@ -99,7 +156,7 @@ A:
 -----
 
 Q:
-В чем приемущество идемпотентности?
+В чем преимущество идемпотентности?
 
 A:
 Безопасно применять Ansible-скрипты несколько раз на сервер.
